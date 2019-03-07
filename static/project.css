@@ -1,0 +1,15 @@
+.ritem{
+    margin-top: 25px;
+    list-style-type: none;
+    margin-left:25px;
+    display: inline-flex;
+}
+
+.fnsbig{
+    font-size: 30px;
+    
+}
+
+.photo{
+    height:300px; width: 300px;
+}

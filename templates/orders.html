@@ -1,0 +1,44 @@
+{%include 'includes/head.html' %}
+{%include 'includes/navbar.html' %}
+<br>
+<center>
+
+    <div class="Jumbotron container responsive warning-color" style="border-radius: 45px;">
+
+
+        <div class="row">
+            <div class="card col-4 text-left Jumbotron elegant-color-dark white-text">
+                <h2><u><b>User info!</b></u></h2>
+                <p><b>Name:</b>{{us.uid.name}}</p>
+                <p><b>Phone:</b>{{us.uid.phone}}</p>
+                <p><b>Email:</b>{{us.uid.email}}</p>
+                <p><b>Shipping Address:</b>{{us.uid.address}}</p>
+            </div>
+        </div>
+
+        <hr class="my-3"> <br>
+
+        <table class="table table-hover table-striped">
+            <tr>
+                <thead class="elegant-color-dark white-text">
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </thead>
+            </tr>
+
+            {%for u in u%}
+            <tr>
+                <td>{{u.item_name}}</td>
+                <td>{{u.price}}</td>
+                <td>{{u.quantity}}</td>
+            </tr>
+            {%endfor%}
+
+
+        </table>
+
+    </div>
+    </div>
+
+</center>

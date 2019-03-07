@@ -1,0 +1,47 @@
+{%load static%}
+<style>
+    a:hover {
+        color: white;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+
+<body background="{%static '002.jpg'%}" style="background-size:cover;">
+    <nav class="container navbar-expand navbar warning-color" style="border-radius:45px">
+        <ul style="text-align:center; font-size: 25px; font-weight: bolder" class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link s1" href="{%url 'home'%}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link s1" href="{%url 'about'%}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'store'%}">Store</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'cart'%}">Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'staff_auth'%}">Staff</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/">Admin</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <br class="my-1">
+    <center>
+        <div class="font-weight-bold card text-center warning-color"
+            style="width:900px; font-size: 45px; border-radius: 45px;">Grocery
+            EMart</div><br>
+        <div class="font-weight-bold text-center warning-color"
+            style="width:400px; font-size: 40px; border-radius: 45px;">{{head}}</div>
+        <br>
+    </center>
+
+</body>

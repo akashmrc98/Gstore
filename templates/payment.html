@@ -1,0 +1,50 @@
+{%include 'includes/head.html' %}
+{%include 'includes/navbar.html' %}
+<div class="container responsive warning-color-dark" style="border-radius: 45px;"><br><br>
+
+
+    <div class="row black-text">
+
+        <div class="col-6">
+            <h2>Shipping Address!</h2>
+            <p><b>Name:</b>{{g.name}}</p>
+            <p><b>Phone:</b>{{g.phone}}</p>
+            <p><b>Email:</b>{{g.email}}</p>
+            <p><b>Shipping Address:</b>{{g.address}}</p>
+        </div>
+
+        <div class="col-6">
+            <h2>Cash on Delivery!</h2>
+            <form method="POST">{%csrf_token%}
+                <input type="hidden" value="confirm" name='confirm'>
+                <input type="submit" value="Confirm Order!" class="success-color-dark btn">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="row" style="padding:100px;">
+        <h2 class="font-weight-bold black-text">{{msg}}</h2>
+        <table class="warning-color table table-striped table-hover"
+            style="border:10px; border-style:solid; border-radius:45px; padding: 125px;">
+            <tr class="elegant-color-dark white-text">
+                <th>Items</th>
+                <th>Quantiy </th>
+                <th>Price </th>
+            </tr>
+            {%for c in cart%}
+            <tr>
+                <td>{{c.item_name}}</td>
+                <td>{{c.quantity}} grams</td>
+                <td>{{c.price}}₹</td>
+            </tr>
+            {%endfor%}
+            <tr>
+                <td></td>
+                <td>Total</td>
+                <td>{{x}}₹</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

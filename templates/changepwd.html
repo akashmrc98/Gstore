@@ -1,0 +1,18 @@
+{%include 'includes/head.html' %}
+{%include 'includes/navbar.html' %}
+<br>
+<center class="Container" style="width:500px;">
+    <form enctype="multipart/form-data" method="POST" class="Jumbotron form-group warning-color-dark font-weight-bold"
+        style="border-radius:45px;">
+        <h3>{{msg}}</h3>
+        {%csrf_token%}
+        {{form}}
+        <br>
+        <input type="submit" value="LOGIN!" class="form-control elegant-color-dark btn white-text"
+            style="height:50px; width:150px; color:black; font-weight:bolder;" /><br><br>
+    </form>
+
+</center>
+<h3 class="green-text font-weight-bold text-center">{{lg}}</h3>
+
+</div>

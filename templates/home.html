@@ -1,0 +1,21 @@
+{%include 'includes/head.html' %}
+{%include 'includes/navbar.html' %}
+<center>
+    <div style="width:500px; border:0px; border-style: groove; margin-top: 10px;" class="container-fluid responsive">
+        <br />
+        <form enctype="multipart/form-data" method="POST"
+            class="Jumbotron form-group warning-color-dark font-weight-bold" style="border-radius:45px;">
+            <h3>Login to access store!</h3>
+            {%csrf_token%}
+            {{form}}
+            <br>
+            <input type="submit" value="LOGIN!" class="form-control elegant-color-dark btn white-text"
+                style="height:50px; width:150px; color:black; font-weight:bolder;" /><br><br>
+            <a href="{%url 'changepwd' %}">forgot password?</a><br><br>
+            <a href="{%url 'add_user' %}">New user signup here!</a>
+        </form>
+
+</center>
+<h3 class="green-text font-weight-bold text-center">{{lg}}</h3>
+
+</div>

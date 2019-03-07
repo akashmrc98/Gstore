@@ -1,0 +1,43 @@
+{%include 'includes/head.html' %}
+{%include 'includes/navbar.html' %}
+{%load static%}
+<br>
+
+<center>
+    <div class="Container card font-weight-bold black-text text-left Jumbotron warning-color-dark"
+        style="border-radius:45px;">
+        <table class="table table-striped table-hover" style="border:10px; border-style:solid; border-radius:45px;">
+            <h3 class="font-weight-bold black-text">{{msg}}</h3>
+            <tr class="elegant-color-dark white-text">
+                <th>Items</th>
+                <th>Price</th>
+                <th>Quantiy</th>
+                <th>Options</th>
+            </tr>
+            {%if items%}
+            {%for item in items%}
+            <tr class="black-text">
+                <td>{{item.item_name}}</td>
+                <td>{{item.price}}₹</td>
+                <td>{{item.quantity}} grams</td>
+                <td>
+                    <form method="POST">{%csrf_token%}
+                        <input type="hidden" value="{{item.cid}}" name="sig">
+                        <input type="submit" value="Remove" class="card elegant-color-dark white-text"></form>
+                </td>
+            </tr>
+            {%endfor%}
+
+
+        </table>
+        <center>
+            <form method="POST">{%csrf_token%}
+                <input type="hidden" value="checkout" name="sig">
+                <input type="submit" value="Checkout!" class="btn elegant-color-dark white-text"></form>
+        </center>
+
+    </div>
+    {%else%}
+    <h2 class="font-weight-bold black-text">Cart is Empty!</h2>
+    {%endif%}
+</center>

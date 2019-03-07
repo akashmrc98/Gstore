@@ -1,0 +1,108 @@
+{%load static%}
+{%include 'includes/head.html' %}
+{%include 'includes/navbar.html' %}
+<center class="container">
+    <div class="row" style="padding:0px 0px 0px 75px;">
+
+        <form method="GET">
+            <input type="hidden" value="fruits" name="data">
+            <input type="submit" value="Fruits" class="btn elegant-color-dark teal-text">
+        </form>
+
+        <form method="GET">
+            <input type="hidden" value="vegetables" name="data">
+            <input type="submit" value="Vegetables" class="btn elegant-color-dark teal-text">
+        </form>
+
+        <form method="GET">
+            <input type="hidden" value="meat" name="data">
+            <input type="submit" value="Meat" class="btn elegant-color-dark teal-text">
+        </form>
+
+        <form method="GET">
+            <input type="hidden" value="nuts" name="data">
+            <input type="submit" value="Nuts" class="btn elegant-color-dark teal-text">
+        </form>
+
+
+
+        <form method="GET">
+            <input type="hidden" value="others" name="data">
+            <input type="submit" value="Others" class="btn elegant-color-dark teal-text">
+        </form>
+
+        <a href="{%url 'orders'%}" style="height:50px;" class="btn elegant-color-dark teal-text">Your Orders!</a>
+
+
+        <a href="{%url 'logout'%}" style="height:50px;" class="btn elegant-color-dark teal-text">Logout</a>
+
+    </div>
+
+
+    {% for item in items %}
+    {{ item.full_name|upper }}
+    {% endfor %}
+
+    <div class="pagination">
+        <div class="container" style="border-radius:45px;">
+            <h3 class="font-weight-bold black-text">{{msg}}</h3>
+            {%for i in items%}
+            <div class="card warning-color-dark" style="border-radius:45px;">
+                <div class="row" style="padding:25px;">
+                    <div class="col-5">
+                        <img src="{{i.image.url}}"
+                            style="border:10px; border-style:inset; width:250px; height: 250px; border-radius: 45px;">
+                        <h2 class="black-text font-weight-bold">{{i.item_name}}</h2>
+                    </div>
+                    <div class="col-3">
+                        <form method="POST">
+                            {%csrf_token%}
+                            <select class="form-control" name="qnt">
+                                <option value="
+                                        0">0 grams</option>
+                                <option value="100">100 grams</option>
+                                <option value="250">250 grams</option>
+                                <option value="500">500 grams</option>
+                                <option value="750">750 grams</option>
+                                <option value="1000">1000 grams</option>
+                                <option value="2000">2000 grams</option>
+                                <option value="2500">2500 grams</option>
+                                <option value="5000">5000 grams</option>
+                            </select>
+                            <p>A graded {{i.item_name}}!</p>
+                            <input type="hidden" value="{{i.item_name}}" name="item">
+                            <input type="submit" value="Add to Cart!"
+                                class="form-control elegant-color-dark btn white-text"
+                                style="height:50px; width:200px; color:black; font-weight:bolder;" /><br><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+
+    </div>
+
+</center>
+
+<center>
+    <div class="container">
+        <span class="step-links">
+
+
+            {% if items.has_previous %}
+            <a class="btn elegant-color-dark" href="?page=1">&laquo; first</a>
+            <a class="btn elegant-color-dark" href="?page={{ items.previous_page_number }}">previous</a>
+            {% endif %}
+
+
+            <span class="current">
+                <h4 class="font-weight-bold">Page {{ items.number }} of {{ items.paginator.num_pages }}.</h4>
+            </span>
+
+            {% if items.has_next %}
+            <a class="btn elegant-color-dark" href="?page={{ items.next_page_number }}">next</a>
+            <a class="btn elegant-color-dark" href="?page={{ items.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span></div>
+</center>
